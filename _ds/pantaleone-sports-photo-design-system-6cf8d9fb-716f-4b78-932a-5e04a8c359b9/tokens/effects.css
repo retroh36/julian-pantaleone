@@ -1,0 +1,55 @@
+/* ===========================================================================
+   EFFECTS — shadows, blur, motion, focus — Pantaleone Sports Photography
+   Dark gallery surfaces lean on subtle elevation + a blue "glow" for accent.
+   =========================================================================== */
+
+:root {
+  /* --- Elevation shadows (tuned for dark surfaces) --- */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-lg:  0 18px 44px rgba(0, 0, 0, 0.55);
+  --shadow-xl:  0 36px 80px rgba(0, 0, 0, 0.6);
+
+  /* Lift used on hovered photo cards */
+  --shadow-photo:      0 24px 60px rgba(0, 0, 0, 0.6);
+
+  /* Blue glow — focus, active thumbnails, primary CTA emphasis */
+  --glow-blue:      0 0 0 1px rgba(0,112,255,0.5), 0 8px 30px rgba(0,112,255,0.35);
+  --glow-blue-soft: 0 10px 40px rgba(0,112,255,0.25);
+
+  /* Inset hairline used to define edges on dark cards */
+  --inset-hairline: inset 0 0 0 1px rgba(255,255,255,0.06);
+
+  /* --- Focus ring --- */
+  --ring: 0 0 0 3px rgba(46,139,255,0.45);
+  --ring-offset: 0 0 0 2px var(--surface-page), 0 0 0 5px rgba(46,139,255,0.55);
+
+  /* --- Blur (glass over imagery) --- */
+  --blur-sm: blur(6px);  /* @kind other */
+  --blur-md: blur(14px); /* @kind other */
+  --blur-lg: blur(28px); /* @kind other */
+  --glass-bg: rgba(15, 18, 25, 0.6); /* @kind color */
+
+  /* --- Motion — confident, athletic easing; quick but never bouncy --- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);   /* @kind other */ /* primary — decisive deceleration */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);   /* @kind other */
+  --ease-in:    cubic-bezier(0.55, 0, 1, 0.45);   /* @kind other */
+
+  --dur-fast:   140ms; /* @kind other */
+  --dur-base:   240ms; /* @kind other */
+  --dur-slow:   420ms; /* @kind other */
+  --dur-reveal: 700ms; /* @kind other */ /* image / section reveals */
+
+  /* Hover/press transforms */
+  --press-scale: 0.97; /* @kind other */
+  --lift-y: -4px;      /* @kind spacing */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;   /* @kind other */
+    --dur-base: 0ms;   /* @kind other */
+    --dur-slow: 0ms;   /* @kind other */
+    --dur-reveal: 0ms; /* @kind other */
+  }
+}

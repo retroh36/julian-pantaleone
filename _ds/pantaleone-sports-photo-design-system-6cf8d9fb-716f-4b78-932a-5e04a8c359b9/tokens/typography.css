@@ -1,0 +1,81 @@
+/* ===========================================================================
+   TYPOGRAPHY — Pantaleone Sports Photography
+   Display: Saira Condensed — athletic, condensed, set UPPERCASE for headlines.
+   Body/UI: Archivo — clean grotesque.
+   Data/EXIF/labels: JetBrains Mono — technical metadata (f-stop, ISO, shutter).
+   =========================================================================== */
+
+:root {
+  /* --- Families --- */
+  --font-display: "Saira Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body:    "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Weights --- */
+  --fw-regular:   400; /* @kind font */
+  --fw-medium:    500; /* @kind font */
+  --fw-semibold:  600; /* @kind font */
+  --fw-bold:      700; /* @kind font */
+  --fw-black:     800; /* @kind font */
+
+  /* --- Fluid display scale (headlines use Saira Condensed) --- */
+  --text-display-xl: clamp(3.5rem, 8vw, 7.5rem);   /* hero hammer headline */
+  --text-display-l:  clamp(2.75rem, 5.5vw, 5rem);
+  --text-display-m:  clamp(2rem, 3.6vw, 3.25rem);
+  --text-display-s:  clamp(1.6rem, 2.4vw, 2.25rem);
+
+  /* --- UI / body scale (Archivo) --- */
+  --text-xl:   1.5rem;    /* 24 */
+  --text-lg:   1.25rem;   /* 20 */
+  --text-md:   1.0625rem; /* 17 — base reading */
+  --text-base: 1rem;      /* 16 */
+  --text-sm:   0.875rem;  /* 14 */
+  --text-xs:   0.75rem;   /* 12 */
+
+  /* --- Mono / label scale --- */
+  --text-meta:  0.8125rem; /* 13 — EXIF rows */
+  --text-eyebrow: 0.75rem; /* 12 — overline labels */
+
+  /* --- Line heights --- */
+  --leading-none:    1;      /* @kind font */
+  --leading-tight:   1.08;   /* @kind font */ /* display headlines */
+  --leading-snug:    1.28;   /* @kind font */
+  --leading-normal:  1.55;   /* @kind font */ /* body copy */
+  --leading-relaxed: 1.7;    /* @kind font */
+
+  /* --- Letter spacing --- */
+  --tracking-display: -0.01em; /* @kind font */ /* condensed display, slightly tight */
+  --tracking-tight:   -0.02em; /* @kind font */
+  --tracking-normal:  0;       /* @kind font */
+  --tracking-wide:    0.04em;  /* @kind font */
+  --tracking-eyebrow: 0.22em;  /* @kind font */ /* WIDE overlines, like the logo tagline */
+  --tracking-mono:    0.06em;  /* @kind font */
+
+  /* --- Signature athletic slant (mimics the logo's italic lettering) --- */
+  --slant: -7deg; /* @kind other */
+}
+
+/* ---- Utility classes (optional, available to consumers) ---- */
+.jp-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+.jp-slant { display: inline-block; transform: skewX(var(--slant)); }
+
+.jp-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-hover);
+}
+.jp-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-muted);
+}

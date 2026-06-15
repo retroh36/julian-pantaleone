@@ -1,0 +1,117 @@
+/* ===========================================================================
+   Portfolio website — kit-specific layout. Foundations come from styles.css.
+   =========================================================================== */
+
+.site { min-height: 100vh; background: var(--surface-page); overflow-x: hidden; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-sticky);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px var(--gutter);
+  transition: background var(--dur-base) var(--ease-out), backdrop-filter var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), padding var(--dur-base) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+.nav--scrolled {
+  background: var(--glass-bg); backdrop-filter: var(--blur-md); -webkit-backdrop-filter: var(--blur-md);
+  border-bottom-color: var(--border-subtle); padding-top: 12px; padding-bottom: 12px;
+}
+.nav__links { display: flex; align-items: center; gap: 28px; }
+.nav__link {
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-secondary); cursor: pointer; transition: color var(--dur-fast) var(--ease-out); background:none;border:none;
+}
+.nav__link:hover, .nav__link--active { color: #fff; }
+.nav__right { display: flex; align-items: center; gap: 22px; }
+@media (max-width: 760px){ .nav__links { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; }
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,7,11,.55) 0%, rgba(6,7,11,.2) 35%, rgba(6,7,11,.75) 100%); }
+.hero__glow { position: absolute; inset: 0; background: var(--gradient-blue-glow); mix-blend-mode: screen; opacity: .7; }
+.hero__inner { position: relative; z-index: 1; padding: 0 var(--gutter) clamp(3rem,8vw,7rem); max-width: var(--container-full); width: 100%; margin: 0 auto; }
+.hero__title {
+  font-family: var(--font-display); font-weight: var(--fw-black); text-transform: uppercase;
+  font-size: var(--text-display-xl); line-height: .92; letter-spacing: -0.02em; color: #fff; margin: 14px 0 0;
+  max-width: 14ch;
+}
+.hero__title em { font-style: normal; color: var(--accent-hover); display: inline-block; transform: skewX(-7deg); }
+.hero__sub { max-width: 46ch; color: var(--text-secondary); font-size: var(--text-lg); margin: 22px 0 30px; }
+.hero__cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.hero__scrollcue { position: absolute; right: var(--gutter); bottom: clamp(3rem,8vw,7rem); z-index:1; display:flex; flex-direction:column; align-items:center; gap:10px; color: var(--text-muted); font-family: var(--font-mono); font-size: 10px; letter-spacing:.2em; }
+.hero__scrollcue span { writing-mode: vertical-rl; }
+.hero__scrollline { width:1px; height:54px; background: linear-gradient(var(--accent), transparent); }
+@media (max-width:760px){ .hero__scrollcue{ display:none; } }
+
+/* ---------- Section frame ---------- */
+.section { max-width: var(--container-full); margin: 0 auto; padding: var(--section-y) var(--gutter); }
+.section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.section__title { font-size: var(--text-display-m); margin: 10px 0 0; color: var(--text-primary); }
+
+/* ---------- Work gallery grid ---------- */
+.work__filterrow { margin-bottom: 28px; }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 10px; gap: 16px;
+}
+.gallery-grid > * { min-width: 0; }
+/* editorial spans for rhythm */
+.gi { grid-column: span 4; grid-row: span 30; }
+.gi--tall { grid-row: span 38; }
+.gi--wide { grid-column: span 6; grid-row: span 28; }
+.gi--short { grid-row: span 24; }
+@media (max-width: 1000px){ .gi, .gi--wide { grid-column: span 6; } }
+@media (max-width: 620px){ .gallery-grid{ grid-template-columns: 1fr; } .gi, .gi--wide{ grid-column: 1 / -1; grid-row: span 30; } }
+
+/* PhotoCard fills its grid cell */
+.gallery-grid .jp-photo { position: relative; width: 100%; height: 100%; aspect-ratio: auto !important; }
+
+/* ---------- Lightbox ---------- */
+.lightbox { position: fixed; inset: 0; z-index: var(--z-modal); display: flex; align-items: center; justify-content: center;
+  background: rgba(4,5,8,.94); padding: 4vh 4vw; }
+@keyframes lb-in { from { opacity: .001; } to { opacity: 1; } }
+.lightbox__stage { position: relative; max-width: min(1100px, 92vw); max-height: 88vh; display: flex; flex-direction: column; gap: 16px; }
+.lightbox__img { max-width: 100%; max-height: 72vh; object-fit: contain; border-radius: var(--radius-sm); box-shadow: var(--shadow-xl); }
+.lightbox__bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.lightbox__cat { color: var(--accent-hover); }
+.lightbox__title { font-family: var(--font-display); font-weight: var(--fw-bold); text-transform: uppercase; color: #fff; font-size: var(--text-display-s); margin: 6px 0 8px; line-height: 1; }
+.lightbox__close { position: fixed; top: 22px; right: 22px; }
+.lightbox__nav { position: fixed; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--prev { left: 22px; } .lightbox__nav--next { right: 22px; }
+.lightbox__count { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted); letter-spacing: .1em; }
+
+/* ---------- About strip ---------- */
+.about { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem,5vw,5rem); align-items: center; }
+.about__copy p { color: var(--text-secondary); font-size: var(--text-md); }
+.about__stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 28px; }
+.stat__num { font-family: var(--font-display); font-weight: var(--fw-black); font-size: var(--text-display-s); color: #fff; line-height: 1; }
+.stat__num em { font-style: normal; color: var(--accent-hover); }
+.stat__lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); margin-top: 6px; }
+.about__photo { position: relative; aspect-ratio: 4/5; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg); }
+.about__photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 820px){ .about{ grid-template-columns: 1fr; } .about__photo{ order: -1; } }
+
+/* ---------- Booking ---------- */
+.booking { position: relative; border-radius: var(--radius-xl); overflow: hidden; background: var(--surface-card); box-shadow: var(--inset-hairline); }
+.booking__inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,4rem); padding: clamp(2rem,5vw,4rem); }
+.booking__glow { position: absolute; inset: 0; background: var(--gradient-blue-glow); }
+.booking__form { display: grid; gap: 16px; position: relative; }
+.booking__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 760px){ .booking__inner{ grid-template-columns: 1fr; } .booking__row{ grid-template-columns: 1fr; } }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--border-subtle); }
+.footer__inner { max-width: var(--container-full); margin: 0 auto; padding: 48px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer__socials { display: flex; gap: 12px; }
+.footer__copy { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); letter-spacing: .06em; }
+
+/* ---------- reveal on scroll ---------- */
+/* Content is ALWAYS fully opaque. The entrance is a transform-only slide-up
+   (no opacity fade) so that environments which freeze the animation clock
+   (headless capture) still render the content — never blank. */
+.reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference){
+  .reveal[data-rise] { animation: jp-rise var(--dur-reveal, .7s) var(--ease-out) both; }
+}
+@keyframes jp-rise { from { transform: translateY(22px); } to { transform: none; } }

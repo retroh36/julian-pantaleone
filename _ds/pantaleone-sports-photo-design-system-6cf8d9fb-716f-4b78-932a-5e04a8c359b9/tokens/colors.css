@@ -1,0 +1,88 @@
+/* ===========================================================================
+   COLORS — Pantaleone Sports Photography
+   Dark-first "gallery" system: photographs read against near-black; the brand
+   navy + electric blue carry identity and interaction.
+   Base brand colors sampled from the logo: navy #002060, blue #0070FF.
+   =========================================================================== */
+
+:root {
+  /* --- Brand core (sampled from logo) --- */
+  --brand-navy:        #002060;  /* deep monogram navy */
+  --brand-navy-deep:   #00154a;  /* darker navy for depth */
+  --brand-blue:        #0070ff;  /* electric primary blue */
+  --brand-blue-bright: #2e8bff;  /* hover / highlight blue */
+  --brand-blue-dim:    #0056c4;  /* pressed / shadowed blue */
+
+  /* --- Blue ramp (built around the brand blue) --- */
+  --blue-50:  #e8f1ff;
+  --blue-100: #c9deff;
+  --blue-200: #93beff;
+  --blue-300: #5d9dff;
+  --blue-400: #2e8bff;
+  --blue-500: #0070ff;
+  --blue-600: #0056c4;
+  --blue-700: #003f93;
+  --blue-800: #002b66;
+  --blue-900: #001b45;
+
+  /* --- Ink / neutral ramp (cool, slightly blue-tinted darks) --- */
+  --ink-900: #06070b;  /* page floor — near black */
+  --ink-850: #0a0c12;  /* page background */
+  --ink-800: #0f1219;  /* base surface */
+  --ink-700: #161a24;  /* raised surface / cards */
+  --ink-600: #1f2530;  /* elevated surface / popovers */
+  --ink-500: #2b313d;  /* hairlines on dark, inputs */
+  --ink-400: #3a414f;  /* strong borders */
+  --ink-300: #5b6373;  /* disabled text / faint */
+  --ink-200: #8b93a3;  /* muted text */
+  --ink-100: #c2c8d4;  /* secondary text */
+  --ink-050: #eef1f6;  /* primary text on dark */
+  --white:    #ffffff;
+
+  /* --- Semantic status --- */
+  --success: #19c37d;
+  --warning: #ffb02e;
+  --danger:  #ff4d4d;
+  --info:    var(--brand-blue);
+
+  /* =========================================================================
+     SEMANTIC ALIASES — reference these in components, not the raw ramps.
+     ========================================================================= */
+
+  /* Surfaces */
+  --surface-page:     var(--ink-850);
+  --surface-base:     var(--ink-800);
+  --surface-card:     var(--ink-700);
+  --surface-raised:   var(--ink-600);
+  --surface-inset:    var(--ink-900);
+  --surface-overlay:  rgba(6, 7, 11, 0.72);  /* scrims over imagery */
+
+  /* Text */
+  --text-primary:     var(--ink-050);
+  --text-secondary:   var(--ink-100);
+  --text-muted:       var(--ink-200);
+  --text-faint:       var(--ink-300);
+  --text-onblue:      #ffffff;
+  --text-link:        var(--brand-blue-bright);
+
+  /* Brand / interactive */
+  --accent:           var(--brand-blue);
+  --accent-hover:     var(--brand-blue-bright);
+  --accent-press:     var(--brand-blue-dim);
+  --accent-contrast:  #ffffff;
+  --focus-ring:       var(--brand-blue-bright);
+
+  /* Borders & lines */
+  --border-subtle:    rgba(255, 255, 255, 0.07);
+  --border-default:   rgba(255, 255, 255, 0.12);
+  --border-strong:    rgba(255, 255, 255, 0.22);
+  --border-accent:    var(--brand-blue);
+
+  /* Photographic scrims — protect text over images */
+  --scrim-bottom: linear-gradient(180deg, rgba(6,7,11,0) 0%, rgba(6,7,11,0.55) 55%, rgba(6,7,11,0.92) 100%); /* @kind color */
+  --scrim-full:   linear-gradient(180deg, rgba(6,7,11,0.20) 0%, rgba(6,7,11,0.65) 100%); /* @kind color */
+
+  /* Signature brand gradient — navy → electric blue (used sparingly) */
+  --gradient-brand: linear-gradient(115deg, var(--brand-navy) 0%, var(--brand-blue) 100%); /* @kind color */
+  --gradient-blue-glow: radial-gradient(120% 120% at 50% 0%, rgba(0,112,255,0.28) 0%, rgba(0,112,255,0) 60%); /* @kind color */
+}
